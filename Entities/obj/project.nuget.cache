@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u6l5Wg7HR/yv3gjNH39ltlvKI9bsOkpD4tBE1Rl9mbABYRFmQLw3qlULNr2NQUi2wU4dHhdsQZG1m5fRAA3tEA==",
+  "dgSpecHash": "S+3zMLCJP4lQG40xTUR0AIq2uySDKtNMvE7dgeBu+WoJxMjRL7S5hwX1pd33akPeN2iS73C9xLnAhp5108Wdfw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Eğitimler\\Yazılım_gelistirici_egitim_serisi\\Final_project\\FinalProject\\FinalProject\\Entities\\Entities.csproj",
+  "projectFilePath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Eğitimler\\Yazılım_gelistirici_egitim_serisi\\ReCapDemo\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zehra\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\zehra\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
