@@ -3229,11 +3229,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Eğitimler\\Yazılım_gelistirici_egitim_serisi\\Final_project\\FinalProject\\FinalProject\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Zehraaa\\GithubRepo\\FinalProject\\ZehraFinalProject\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Eğitimler\\Yazılım_gelistirici_egitim_serisi\\Final_project\\FinalProject\\FinalProject\\Core\\Core.csproj",
+      "projectPath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Zehraaa\\GithubRepo\\FinalProject\\ZehraFinalProject\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\zehra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Eğitimler\\Yazılım_gelistirici_egitim_serisi\\Final_project\\FinalProject\\FinalProject\\Core\\obj\\",
+      "outputPath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Zehraaa\\GithubRepo\\FinalProject\\ZehraFinalProject\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
