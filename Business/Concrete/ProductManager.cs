@@ -23,7 +23,7 @@ namespace Business.Concrete
         public IResult Add(Product product)
         {
             //iş kodları 
-            if (product.ProductName.Length > 2)
+            if (product.ProductName.Length < 2)
             {
                 return new ErrorResult(Messages.productNameInvalid);
 
@@ -37,7 +37,7 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAll()
         {
             //is kodlari
-            if (DateTime.Now.Hour == 23)
+            if (DateTime.Now.Hour == 21)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MainrenanceTime);
             }
