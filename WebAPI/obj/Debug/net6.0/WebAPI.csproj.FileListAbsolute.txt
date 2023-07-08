@@ -85,3 +85,8 @@ C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_seris
 C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\Core.pdb
 C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\DataAccess.pdb
 C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\Entities.pdb
+C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\Autofac.dll
+C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\Autofac.Extras.DynamicProxy.dll
+C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\Autofac.Extensions.DependencyInjection.dll
+C:\Users\zehra\OneDrive\Masaüstü\Eğitimler\Yazılım_gelistirici_egitim_serisi\ReCapDemo\WebAPI\bin\Debug\net6.0\FluentValidation.dll
