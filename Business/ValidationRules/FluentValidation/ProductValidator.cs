@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Castle.Components.DictionaryAdapter.Xml;
+using Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p=>p.UnitPrice).GreaterThan(0);
             RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(10).When(p => p.CategoryID == 1);
             RuleFor(p => p.ProductName).Must(StartWithA).WithMessage("Urunler A harfi ile baslamali");
+       
         }
 
         private bool StartWithA(string arg)
