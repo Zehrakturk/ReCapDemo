@@ -1,13 +1,19 @@
 using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Business.Abstarct;
 using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
+using Core.Utilities.Security.Encyption;
+using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.Identity.Client;
 
 namespace WebAPI
 {
@@ -21,10 +27,11 @@ namespace WebAPI
 
             builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
             {
-                builder.RegisterModule(new AutofacBusinessModule()) ;
+                builder.RegisterModule(new AutofacBusinessModule());
 
             });
-  
+
+
 
             // Add services to the container.
 
@@ -48,14 +55,42 @@ namespace WebAPI
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
+            app.UseAuthorization();
 
             app.MapControllers();
 
             app.Run();
+
         }
 
-       
+        public IConfiguration Configuration { get; set; }
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder.WithOrigins("http://localhost:3000"));
+            });
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                    };
+                });
+
+        }
     }
 }
