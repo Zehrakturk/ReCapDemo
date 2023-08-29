@@ -1,19 +1,18 @@
 using Autofac;
-using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Business.Abstarct;
 using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
+using Business.DependencyResolvers;
+using Core.Extensions;
+using Core.Utilities.IoC;
+using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.Extensions.Options;
-using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 
 namespace WebAPI
 {
@@ -23,26 +22,52 @@ namespace WebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-
-            builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
-            {
-                builder.RegisterModule(new AutofacBusinessModule());
-
-            });
-
-
-
             // Add services to the container.
 
             builder.Services.AddControllers();
-            //builder.Services.AddSingleton<IProductService, ProductManager>();
-            //builder.Services.AddSingleton<IProductDal, EfProductDal>();
+
+            /*builder.Services.AddSingleton<IBrandService, BrandManager>();
+            builder.Services.AddSingleton<IBrandDal, EfBrandDal>();
+            builder.Services.AddSingleton<ICarService, CarManager>();
+            builder.Services.AddSingleton<ICarDal, EfCarDal>();
+            builder.Services.AddSingleton<IColorService, ColorManager>();
+            builder.Services.AddSingleton<IColorDal, EfColorDal>();
+            builder.Services.AddSingleton<ICustomerService, CustomerManager>();
+            builder.Services.AddSingleton<ICustomerDal, EfCustomerDal>();
+            builder.Services.AddSingleton<IRentalService, RentalManager>();
+            builder.Services.AddSingleton<IRentalDal, EfRentalDal>();
+            builder.Services.AddSingleton<IUserService, UserManager>();
+            builder.Services.AddSingleton<IUserDal, EfUserDal>();*/
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                };
+            });
+            ServiceTool.Create(builder.Services);
 
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+               .ConfigureContainer<ContainerBuilder>(builder =>
+               {
+                   builder.RegisterModule(new AutofacBusinessModule());
+               });
+
 
             var app = builder.Build();
 
@@ -53,6 +78,8 @@ namespace WebAPI
                 app.UseSwaggerUI();
             }
 
+            app.UseStaticFiles();
+
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
@@ -62,35 +89,7 @@ namespace WebAPI
             app.MapControllers();
 
             app.Run();
-
-        }
-
-        public IConfiguration Configuration { get; set; }
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http://localhost:3000"));
-            });
-            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidIssuer = tokenOptions.Issuer,
-                        ValidAudience = tokenOptions.Audience,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
-                    };
-                });
-
         }
     }
+
 }

@@ -89,6 +89,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductAdded);
         }
 
+        
         //sadece bu class ın içerisinde kullanılabilmesi için private oluşturuyoruz
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
         {

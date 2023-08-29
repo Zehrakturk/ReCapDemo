@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lC09BfaoVonD8jy1WUuY3T7OotY0oxpzP3fiHvrdoxSzlxFnbvjNKeZqjNw/cohCWcZ/B59mVuMMZfEGrI9inA==",
+  "dgSpecHash": "6bPBEEyebsUp5HoAdwxx3QkVCNT9qmfTUoa8BtBjBxP88KclGVdNcj0IjWzBJnHt9EdvPvRhd0IBH8qkUG0XOQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Eğitimler\\Yazılım_gelistirici_egitim_serisi\\ReCapDemo\\Core\\Core.csproj",
+  "projectFilePath": "C:\\Users\\zehra\\Desktop\\Zehraaa\\GithubRepo\\ReCapDemo\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zehra\\.nuget\\packages\\autofac\\7.0.1\\autofac.7.0.1.nupkg.sha512",
     "C:\\Users\\zehra\\.nuget\\packages\\autofac.extensions.dependencyinjection\\8.0.0\\autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",

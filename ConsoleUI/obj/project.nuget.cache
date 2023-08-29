@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7ONRIxSfmzi2GKGD07SOJeQiQPOnYtWEkea+xU0gI7ZYuIDLDYkQgQor3iaA8rd1ubOu9P5j0UayYbj5nsOLOQ==",
+  "dgSpecHash": "NEsFdx/GB2r3VrLTQbBWY94/1u414+torK0gKXuDYALowxexbLrsAq8kjX8P7PvWpOSVGLd4uXuFGsAo5zZ3+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zehra\\OneDrive\\Masaüstü\\Eğitimler\\Yazılım_gelistirici_egitim_serisi\\ReCapDemo\\ConsoleUI\\ConsoleUI.csproj",
+  "projectFilePath": "C:\\Users\\zehra\\Desktop\\Zehraaa\\GithubRepo\\ReCapDemo\\ConsoleUI\\ConsoleUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zehra\\.nuget\\packages\\autofac\\7.0.1\\autofac.7.0.1.nupkg.sha512",
     "C:\\Users\\zehra\\.nuget\\packages\\autofac.extensions.dependencyinjection\\8.0.0\\autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",

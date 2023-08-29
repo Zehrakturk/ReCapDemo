@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Business\\Abstarct",
+    "\\Business\\CCS",
+    "\\Business\\Concrete",
+    "\\Core\\Utilities",
+    "\\Core\\Utilities\\Security",
+    "\\Core\\Utilities\\Security\\JWT"
   ],
-  "SelectedNode": "\\ZehraFinalProject.sln",
   "PreviewInSolutionExplorer": false
 }
