@@ -304,3 +304,7 @@ C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\obj\Debug\net6.0\r
 C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\obj\Debug\net6.0\ConsoleUI.pdb
 C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\obj\Debug\net6.0\ConsoleUI.genruntimeconfig.cache
 C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\obj\Debug\net6.0\ref\ConsoleUI.dll
+C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\bin\Debug\net6.0\Microsoft.AspNetCore.Http.dll
+C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\bin\Debug\net6.0\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\bin\Debug\net6.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\zehra\Desktop\Zehraaa\GithubRepo\ReCapDemo\ConsoleUI\bin\Debug\net6.0\Microsoft.Net.Http.Headers.dll

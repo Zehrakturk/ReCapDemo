@@ -3,11 +3,14 @@ using Business.BusinessAspect.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
+using Core.Aspects.Autofac.Performance;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -31,6 +34,7 @@ namespace Business.Concrete
             _categoryService = categoryService;
         }
 
+        [CacheRemoveAspect("IProductService.Get")]
         [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
@@ -48,6 +52,7 @@ namespace Business.Concrete
 
         }
 
+        [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
             //is kodlari
@@ -68,6 +73,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max));
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<Product> GetById(int prodcutId)
         {
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductID == prodcutId));
@@ -76,7 +83,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails());
         }
-
+        [CacheRemoveAspect("IProductService.Get")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Update(Product product)
         {
@@ -97,7 +104,7 @@ namespace Business.Concrete
             var result = _productDal.GetAll(p => p.CategoryID ==categoryId).Count();
             if (result >= 10)
             {
-                return new ErrorResult(Messages.productNameInvalid);
+                return new ErrorResult(Messages.CategoryError);
             }
             return new SuccessResult();
 
@@ -125,5 +132,10 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Product product)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

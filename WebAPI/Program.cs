@@ -13,6 +13,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Core.DepencenyResolvers;
 
 namespace WebAPI
 {
@@ -26,19 +27,8 @@ namespace WebAPI
 
             builder.Services.AddControllers();
 
-            /*builder.Services.AddSingleton<IBrandService, BrandManager>();
-            builder.Services.AddSingleton<IBrandDal, EfBrandDal>();
-            builder.Services.AddSingleton<ICarService, CarManager>();
-            builder.Services.AddSingleton<ICarDal, EfCarDal>();
-            builder.Services.AddSingleton<IColorService, ColorManager>();
-            builder.Services.AddSingleton<IColorDal, EfColorDal>();
-            builder.Services.AddSingleton<ICustomerService, CustomerManager>();
-            builder.Services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            builder.Services.AddSingleton<IRentalService, RentalManager>();
-            builder.Services.AddSingleton<IRentalDal, EfRentalDal>();
-            builder.Services.AddSingleton<IUserService, UserManager>();
-            builder.Services.AddSingleton<IUserDal, EfUserDal>();*/
-            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
+            //builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//##15.Günde bu satýr silinir.##
 
             var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -55,7 +45,10 @@ namespace WebAPI
                     IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                 };
             });
-            ServiceTool.Create(builder.Services);
+            builder.Services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule()
+            });
 
 
             builder.Services.AddEndpointsApiExplorer();
